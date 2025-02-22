@@ -1,5 +1,4 @@
 import express from "express";
-
 import 'dotenv/config';
 import { productRouter } from "./api/product";
 import { connectDB } from "./infrastructure/db";
@@ -23,6 +22,11 @@ app.use(cors({
 
 // Use only ClerkExpressWithAuth
 app.use(ClerkExpressWithAuth());
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Fed Storefront Backend!');
+});
 
 // Routes
 app.use("/api/products", productRouter);
